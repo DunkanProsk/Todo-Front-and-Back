@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ToDo</title>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styleTodoLogin.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<header class="header">
+    <div class="header-right">
+        <a href="index.html">To-Do</a>
+        <a href="login.html" class="active">Login In</a>
+        <a href="registration.html">Registration</a>
+    </div>
+</header>
+<body>
+    <div id="todo" class="todo">
+        <h1> Login </h1>
+        <ul>
+            <input type="text" id="input-login" class="input-login" maxlength="20" placeholder="Login" size="25">
+            <input type="password" id="input-password" class="input-password" maxlength="20" placeholder="Password" size="25">
+        </ul>
+        <div id="buttons">
+            <button id="Log" class="Log">Login In</button>
+            <button id="Reg" class="Reg">Registration</button>
+        </div>
+    </div>
+    <script src="scripts/log.js"></script>
+</body>
+</html>

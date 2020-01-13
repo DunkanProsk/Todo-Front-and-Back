@@ -1,7 +1,22 @@
 const Todo = require('../models/todo');
+const Users = require('../models/users');
 
 module.exports.getAll = (req, res) => {
     Todo.find({}, (err, items) => {res.send(items)});
+};
+
+module.exports.getUsers = (req, res) => {
+    Users.find({}, (err, items) => {res.send(items)});
+};
+
+module.exports.createUser = (req, res) => {
+    //Написать проверку на совпадение логина с имеющимся в базе
+    Users.create(req.body).then(() => {
+        res.status(200).json({
+            massage: 'User сохранен',
+            list: Todo.find({}, (err, items) => {res.send(items)})
+        });
+    });
 };
 
 module.exports.createDo = (req, res) => {

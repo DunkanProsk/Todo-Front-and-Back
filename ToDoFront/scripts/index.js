@@ -2,7 +2,6 @@ const input = document.querySelector('#input-field');
 const list = document.querySelector('#list');
 const butt = document.querySelector('#addBtn');
 const clear = document.querySelector('#clearbtn');
-const save = document.querySelector('#savebtn');
 
 let todoList = [];
 
@@ -136,14 +135,6 @@ let render = () => {
     });
 };
 
-let loadSave = () => {
-    if(localStorage.getItem('todoList')) {
-        let j = localStorage.getItem('todoList');
-        let y = JSON.parse(j);
-        todoList = y;
-    };
-};
-
 input.addEventListener('keyup', (enter) => {
     if(enter.key === 'Enter') {
         if(enter.target.value !== '') {
@@ -191,10 +182,4 @@ clear.addEventListener('click',(cl) => {
     localStorage.clear();
 });
 
-save.addEventListener('click',function(){
-    // let i = JSON.stringify(todoList);
-    // localStorage.setItem('todoList',i);
-});
-
-loadSave();
 render();

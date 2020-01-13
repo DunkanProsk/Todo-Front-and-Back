@@ -22,7 +22,3 @@ mongoose.connect('mongodb+srv://dunkan:taganrog123@cluster0-tanen.gcp.mongodb.ne
     if (err) throw err;
     console.log('Successfully connected');
 });
-
-
-
-
