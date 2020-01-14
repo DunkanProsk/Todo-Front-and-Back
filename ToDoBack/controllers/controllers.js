@@ -6,16 +6,29 @@ module.exports.getAll = (req, res) => {
 };
 
 module.exports.getUsers = (req, res) => {
-    Users.find({}, (err, items) => {res.send(items)});
+    Users.findOne({login: req.body.login, password: req.body.password}, function(err, doc){
+        if(doc === null) {
+            res.status(409).json({massage: 'User не существует!'});
+            console.log('User не существует!');
+        } else {
+            res.status(200).json({massage: 'Успешный вход!'});
+            console.log('Успешный вход!');
+        }
+    });
 };
 
 module.exports.createUser = (req, res) => {
-    //Написать проверку на совпадение логина с имеющимся в базе
-    Users.create(req.body).then(() => {
-        res.status(200).json({
-            massage: 'User сохранен',
-            list: Todo.find({}, (err, items) => {res.send(items)})
-        });
+    Users.findOne({login: req.body.login}, function(err, doc){
+        if(doc === null) {
+            Users.create(req.body).then(() => {
+                res.status(200).json({massage: 'Регистрация успешна!'});
+                console.log('Регистрация успешна!');
+            });
+        } else {
+            console.log(doc);
+            res.status(409).json({massage: 'User существует!'});
+            console.log('User существует!');
+        }
     });
 };
 
